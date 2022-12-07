@@ -1,0 +1,45 @@
+// 定义IDL的版本
+syntax = "proto3";
+
+// 定义生成java代码的包名
+option java_package = "com.tqz.grpc.demo.proto";
+// 定义外部类名
+//option java_outer_classname = "Hello";
+// 定义生成一个文件
+option java_multiple_files = true;
+
+// 定义该proto文件的包名
+package hello;
+
+// 定义接口
+service HelloService {
+
+  // 1.一元流，请求参数为 HelloRequest 返回参数为 HelloResponse
+  rpc testUnary(HelloRequest) returns (HelloResponse) {};
+
+  // 2.服务端流，服务端不断的向客户端写
+  rpc testServerStream(HelloRequest) returns (stream HelloResponse) {};
+
+  // 3.客户端流，客户端不断的向服务端写
+  rpc testClientStream(stream HelloRequest) returns (HelloResponse) {};
+
+  // 4.双向流，客户端不断向服务端写，服务端不断向客户端写
+  rpc testBidirectionalStream(stream HelloRequest) returns (stream HelloResponse) {};
+}
+
+// 定义请求信息
+message HelloRequest {
+
+  // int32为int类型，int64为long类型，后面的1不是赋值，而是占位
+  int32 id = 1;
+
+  string name = 2;
+}
+
+// 定义相应信息
+message HelloResponse {
+
+  int32 id = 1;
+
+  string result = 2;
+}
