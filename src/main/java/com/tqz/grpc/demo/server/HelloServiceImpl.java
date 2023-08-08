@@ -6,7 +6,7 @@ import com.tqz.grpc.demo.proto.HelloServiceGrpc;
 import io.grpc.stub.StreamObserver;
 
 /**
- * <p>HelloService接 口的实现类，如果 {@link HelloServiceGrpc.HelloServiceImplBase} 没有实现类，
+ * <p>HelloService接口的实现类，如果 {@link HelloServiceGrpc.HelloServiceImplBase} 没有实现类，
  * 服务端将会向客户端返回一个错误，表示该类没有被实现.
  *
  * @author tianqingzhao
